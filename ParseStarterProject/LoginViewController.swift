@@ -23,17 +23,26 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let currentUser = PFUser.currentUser()
-        if currentUser != nil
-        {
-            //self.performSegueWithIdentifier("loginToHomeSegue", sender: nil)
-        }
         
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.moveToHomeScreenIfAlreadyLoggedIn()
+       
+    }
+    
+    func moveToHomeScreenIfAlreadyLoggedIn()
+    {
+        let currentUser = PFUser.currentUser()
+        if currentUser != nil && currentUser!.username != nil
+        {
+            self.performSegueWithIdentifier("loginToHomeSegue", sender: nil)
+        }
     }
     
     @available(iOS 8.0, *)
