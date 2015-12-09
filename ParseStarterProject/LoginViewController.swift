@@ -38,8 +38,7 @@ class LoginViewController: UIViewController {
     
     func moveToHomeScreenIfAlreadyLoggedIn()
     {
-        let currentUser = PFUser.currentUser()
-        if currentUser != nil && currentUser!.username != nil
+        if self.isEmailVerified()
         {
             self.performSegueWithIdentifier("loginToHomeSegue", sender: nil)
         }
@@ -56,6 +55,7 @@ class LoginViewController: UIViewController {
             }
             else
             {
+                
                 self.signin()
                 
             }
@@ -114,19 +114,40 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @available(iOS 8.0, *)
     func signin()
     {
         PFUser.logInWithUsernameInBackground(usernameTextField.text!, password:passwordTextField.text!) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 // Do stuff after successful login.
-                self.performSegueWithIdentifier("loginToHomeSegue", sender: nil)
-                print("Your are logged in!!!")
+                if self.isEmailVerified()
+                {
+                    self.performSegueWithIdentifier("loginToHomeSegue", sender: nil)
+                    print("Your are logged in!!!")
+                }
+                else
+                {
+                    let alert = UIAlertController(title: "Error", message: "Please verify your email.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+
+                }
             } else {
                 // The login failed. Check error to see why.
                 print("Error Log in!!!")
             }
         }
+    }
+    
+    func isEmailVerified() ->Bool
+    {
+        let currentUser = PFUser.currentUser()
+        if currentUser != nil && currentUser!.username != nil && currentUser!["emailVerified"] as! Bool
+        {
+            return true
+        }
+        return false
     }
     
     func isValidEmail(testStr:String) -> Bool {
