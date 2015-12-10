@@ -75,28 +75,109 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8e-1O-lN4">
+                                <rect key="frame" x="200" y="191" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.54024991122159083" green="0.12944529104792368" blue="0.12143482626014911" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="05d-2N-eW9"/>
+                                    <constraint firstAttribute="height" constant="30" id="bwv-xn-lhx"/>
+                                </constraints>
+                                <state key="normal" title="Scan QR Code">
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="scanQRCodePressed:" destination="ELZ-Zg-mha" eventType="touchUpInside" id="bUI-vs-Unv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyA-gG-AyR">
+                                <rect key="frame" x="248" y="229" width="104" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="104" id="Oph-g0-tfb"/>
+                                    <constraint firstAttribute="height" constant="63" id="mS1-Ty-onv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="QIH-75-nGM" secondAttribute="trailing" id="0nd-6y-LHr"/>
+                            <constraint firstItem="u8e-1O-lN4" firstAttribute="centerX" secondItem="JGC-Ah-Dq9" secondAttribute="centerX" id="3ch-zB-8xL"/>
                             <constraint firstItem="mmZ-Sz-mBj" firstAttribute="leading" secondItem="JGC-Ah-Dq9" secondAttribute="leadingMargin" constant="-20" id="8sk-Qc-C8e"/>
                             <constraint firstItem="Al8-W9-hYQ" firstAttribute="leading" secondItem="JGC-Ah-Dq9" secondAttribute="leadingMargin" id="DU3-ou-Ns8"/>
+                            <constraint firstItem="LyA-gG-AyR" firstAttribute="centerX" secondItem="JGC-Ah-Dq9" secondAttribute="centerX" id="Ft6-KQ-a3j"/>
                             <constraint firstItem="mmZ-Sz-mBj" firstAttribute="top" secondItem="JGC-Ah-Dq9" secondAttribute="topMargin" constant="20" id="GDK-Vg-Uke"/>
                             <constraint firstItem="QIH-75-nGM" firstAttribute="leading" secondItem="Al8-W9-hYQ" secondAttribute="trailing" constant="8" id="Jk9-Sx-lMk"/>
                             <constraint firstItem="QIH-75-nGM" firstAttribute="height" secondItem="Al8-W9-hYQ" secondAttribute="height" id="O3Z-Td-8qk"/>
+                            <constraint firstItem="u8e-1O-lN4" firstAttribute="top" secondItem="Al8-W9-hYQ" secondAttribute="bottom" constant="8" id="WoU-6d-HQ8"/>
+                            <constraint firstItem="LyA-gG-AyR" firstAttribute="top" secondItem="u8e-1O-lN4" secondAttribute="bottom" constant="8" id="Ymf-Ne-rHf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mmZ-Sz-mBj" secondAttribute="trailing" constant="-20" id="aiq-df-UjP"/>
                             <constraint firstItem="QIH-75-nGM" firstAttribute="top" secondItem="mmZ-Sz-mBj" secondAttribute="bottom" constant="8" id="c9S-5d-AwE"/>
                             <constraint firstItem="Al8-W9-hYQ" firstAttribute="top" secondItem="mmZ-Sz-mBj" secondAttribute="bottom" constant="8" id="oIF-pG-ncT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" selectedImage="starFilled.png" systemItem="favorites" id="GjQ-BP-yOi"/>
+                    <navigationItem key="navigationItem" id="SjW-TF-b4Z"/>
                     <connections>
+                        <outlet property="countLabel" destination="LyA-gG-AyR" id="1pE-Uc-u93"/>
                         <outlet property="titleLabel" destination="QIH-75-nGM" id="EXr-HL-BU2"/>
+                        <segue destination="3JW-B9-SdS" kind="show" identifier="punchCardToQRReaderSegue" id="uEI-n4-dlB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URx-Hs-taf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7" y="-472"/>
+            <point key="canvasLocation" x="819" y="-472"/>
+        </scene>
+        <!--Scan QR Code for stamping-->
+        <scene sceneID="O6C-5g-vRF">
+            <objects>
+                <viewController title="Scan QR Code for stamping" id="3JW-B9-SdS" customClass="QRReaderViewController" customModule="Gurkha_s_Stamp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jXs-In-YUy"/>
+                        <viewControllerLayoutGuide type="bottom" id="Noh-Wz-6Ie"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FlY-tu-Xwc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRE-Yj-aVs">
+                                <rect key="frame" x="277" y="72" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="BEo-1m-a43"/>
+                                    <constraint firstAttribute="height" constant="30" id="t0Q-mz-wUC"/>
+                                </constraints>
+                                <state key="normal" title="Stamp"/>
+                                <connections>
+                                    <action selector="stampButtonPressed:" destination="3JW-B9-SdS" eventType="touchUpInside" id="vgs-Ob-d6P"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb1-2J-mHW">
+                                <rect key="frame" x="257" y="280" width="86" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="86" id="AqL-J6-lHH"/>
+                                    <constraint firstAttribute="height" constant="40" id="ccN-F0-p5i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KRE-Yj-aVs" firstAttribute="top" secondItem="jXs-In-YUy" secondAttribute="bottom" constant="8" id="XkO-Bf-eBp"/>
+                            <constraint firstItem="bb1-2J-mHW" firstAttribute="centerX" secondItem="FlY-tu-Xwc" secondAttribute="centerX" id="gW7-Wz-Ipz"/>
+                            <constraint firstItem="KRE-Yj-aVs" firstAttribute="centerX" secondItem="FlY-tu-Xwc" secondAttribute="centerX" id="sZh-96-OHS"/>
+                            <constraint firstItem="bb1-2J-mHW" firstAttribute="centerY" secondItem="FlY-tu-Xwc" secondAttribute="centerY" id="v2X-EJ-8T2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="stampButton" destination="KRE-Yj-aVs" id="9el-Pd-cTD"/>
+                        <outlet property="stampedMessageLabel" destination="bb1-2J-mHW" id="ady-Tu-tIn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9vP-es-x9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1512" y="-477"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="NvG-CF-WU0">
@@ -256,13 +337,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ELZ-Zg-mha" kind="relationship" relationship="viewControllers" id="Q9G-UG-Iie"/>
+                        <segue destination="Z9f-YH-lB2" kind="relationship" relationship="viewControllers" id="Q9G-UG-Iie"/>
                         <segue destination="f9h-pJ-40c" kind="relationship" relationship="viewControllers" id="jcG-7o-dhC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMe-fB-rzY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-693" y="-118"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GIn-eV-C29">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z9f-YH-lB2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" selectedImage="starFilled.png" systemItem="favorites" id="GjQ-BP-yOi"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G3D-A3-QyS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ELZ-Zg-mha" kind="relationship" relationship="rootViewController" id="Ruw-5n-iH8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rCk-iA-5KT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7" y="-472"/>
         </scene>
     </scenes>
     <resources>

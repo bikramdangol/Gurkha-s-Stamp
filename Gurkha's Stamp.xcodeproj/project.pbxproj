@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		596DCFDF1C1944EA00764B3A /* QRReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596DCFDE1C1944EA00764B3A /* QRReaderViewController.swift */; };
 		59EA966E1C178FD1000F19DC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EA966D1C178FD1000F19DC /* logo.png */; };
 		59EA96701C1790FC000F19DC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EA966F1C1790FC000F19DC /* TabBarViewController.swift */; };
 		59EA96721C1791FE000F19DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EA96711C1791FE000F19DC /* LoginViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		596DCFDE1C1944EA00764B3A /* QRReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRReaderViewController.swift; sourceTree = "<group>"; };
 		59EA966D1C178FD1000F19DC /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		59EA966F1C1790FC000F19DC /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = ../TabBarViewController.swift; sourceTree = "<group>"; };
 		59EA96711C1791FE000F19DC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +89,7 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
-				81BA81471A49DA1800E65899 /* ParseStarterProject */,
+				81BA81471A49DA1800E65899 /* Gurkha's Stamp */,
 				814C3AC51B69877600E307BB /* Resources */,
 				81BA816A1A49DB5600E65899 /* Frameworks */,
 				81BA81461A49DA1800E65899 /* Products */,
@@ -102,7 +104,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		81BA81471A49DA1800E65899 /* ParseStarterProject */ = {
+		81BA81471A49DA1800E65899 /* Gurkha's Stamp */ = {
 			isa = PBXGroup;
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
@@ -110,8 +112,10 @@
 				59EA96731C17D1C4000F19DC /* PunchCardViewController.swift */,
 				59EA96851C180626000F19DC /* DetailViewController.swift */,
 				59EA966F1C1790FC000F19DC /* TabBarViewController.swift */,
+				596DCFDE1C1944EA00764B3A /* QRReaderViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 			);
+			name = "Gurkha's Stamp";
 			path = ParseStarterProject;
 			sourceTree = "<group>";
 		};
@@ -234,6 +238,7 @@
 			files = (
 				59EA96721C1791FE000F19DC /* LoginViewController.swift in Sources */,
 				59EA96701C1790FC000F19DC /* TabBarViewController.swift in Sources */,
+				596DCFDF1C1944EA00764B3A /* QRReaderViewController.swift in Sources */,
 				59EA96861C180626000F19DC /* DetailViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				59EA96741C17D1C4000F19DC /* PunchCardViewController.swift in Sources */,
