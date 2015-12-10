@@ -9,7 +9,7 @@
         <!--Detail View Controller-->
         <scene sceneID="dpn-ic-UQ9">
             <objects>
-                <viewController id="f9h-pJ-40c" customClass="DetailViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f9h-pJ-40c" customClass="DetailViewController" customModule="Gurkha_s_Stamp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bfp-se-OpX"/>
                         <viewControllerLayoutGuide type="bottom" id="iAb-vW-0Jj"/>
@@ -47,7 +47,7 @@
         <!--Punch Card View Controller-->
         <scene sceneID="3DQ-wO-MsO">
             <objects>
-                <viewController id="ELZ-Zg-mha" customClass="PunchCardViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ELZ-Zg-mha" customClass="PunchCardViewController" customModule="Gurkha_s_Stamp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Oi7-kL-RYR"/>
                         <viewControllerLayoutGuide type="bottom" id="DHb-nF-64t"/>
@@ -101,7 +101,7 @@
         <!--Login View Controller-->
         <scene sceneID="NvG-CF-WU0">
             <objects>
-                <viewController id="CeT-z8-7Mj" customClass="LoginViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CeT-z8-7Mj" customClass="LoginViewController" customModule="Gurkha_s_Stamp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aH4-e8-3jR"/>
                         <viewControllerLayoutGuide type="bottom" id="bQg-lM-hEX"/>
@@ -170,21 +170,40 @@
                                             <action selector="signupButtonPressed:" destination="CeT-z8-7Mj" eventType="touchUpInside" id="Fr0-Cd-QMQ"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DG1-UO-C40">
+                                        <rect key="frame" x="318" y="190" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="FZ5-uS-YjO"/>
+                                            <constraint firstAttribute="height" constant="20" id="dSV-cD-3IY"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kep-wM-eV1">
+                                        <rect key="frame" x="0.0" y="254" width="560" height="326"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="0.24313727020000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="2rh-86-rQZ" firstAttribute="leading" secondItem="V0v-fr-tI9" secondAttribute="trailing" constant="-60" id="352-mo-vGF"/>
                                     <constraint firstItem="sdL-wr-bpN" firstAttribute="top" secondItem="iZx-NF-Igk" secondAttribute="bottom" constant="10" id="797-br-dso"/>
+                                    <constraint firstAttribute="bottom" secondItem="Kep-wM-eV1" secondAttribute="bottom" id="7j3-6r-Oyp"/>
                                     <constraint firstItem="gHb-am-CxC" firstAttribute="top" secondItem="2rh-86-rQZ" secondAttribute="bottom" constant="10" id="9Cn-8S-Qb8"/>
                                     <constraint firstItem="iZx-NF-Igk" firstAttribute="top" secondItem="Q6e-dC-t3E" secondAttribute="top" constant="20" id="AAa-2B-dhN"/>
                                     <constraint firstItem="iZx-NF-Igk" firstAttribute="centerX" secondItem="Q6e-dC-t3E" secondAttribute="centerX" id="Fm9-Ch-cCa"/>
+                                    <constraint firstItem="DG1-UO-C40" firstAttribute="leading" secondItem="2rh-86-rQZ" secondAttribute="trailing" constant="8" id="IXx-la-ow7"/>
                                     <constraint firstItem="uiR-xu-STv" firstAttribute="centerX" secondItem="Q6e-dC-t3E" secondAttribute="centerX" id="Jb7-6d-szG"/>
+                                    <constraint firstItem="Kep-wM-eV1" firstAttribute="leading" secondItem="Q6e-dC-t3E" secondAttribute="leading" id="K8F-cj-9M8"/>
+                                    <constraint firstItem="DG1-UO-C40" firstAttribute="top" secondItem="uiR-xu-STv" secondAttribute="bottom" constant="15" id="Pc2-0Z-DcW"/>
                                     <constraint firstItem="2rh-86-rQZ" firstAttribute="top" secondItem="uiR-xu-STv" secondAttribute="bottom" constant="10" id="RVk-ku-O5f"/>
                                     <constraint firstItem="V0v-fr-tI9" firstAttribute="top" secondItem="2rh-86-rQZ" secondAttribute="bottom" constant="10" id="S9I-wN-flG"/>
                                     <constraint firstItem="uiR-xu-STv" firstAttribute="top" secondItem="sdL-wr-bpN" secondAttribute="bottom" constant="10" id="Tt3-sJ-T3e"/>
                                     <constraint firstItem="gHb-am-CxC" firstAttribute="top" secondItem="2rh-86-rQZ" secondAttribute="top" id="WVT-3X-J0I"/>
                                     <constraint firstItem="sdL-wr-bpN" firstAttribute="centerX" secondItem="Q6e-dC-t3E" secondAttribute="centerX" id="jjU-d3-sE7"/>
+                                    <constraint firstItem="Kep-wM-eV1" firstAttribute="top" secondItem="gHb-am-CxC" secondAttribute="bottom" constant="8" id="ork-RP-gFl"/>
                                     <constraint firstItem="iZx-NF-Igk" firstAttribute="centerY" secondItem="Q6e-dC-t3E" secondAttribute="centerY" id="osB-GS-28j"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kep-wM-eV1" secondAttribute="trailing" id="vGG-aZ-XC3"/>
                                     <constraint firstItem="2rh-86-rQZ" firstAttribute="centerX" secondItem="Q6e-dC-t3E" secondAttribute="centerX" id="y0f-qQ-esO"/>
                                     <constraint firstItem="gHb-am-CxC" firstAttribute="leading" secondItem="2rh-86-rQZ" secondAttribute="trailing" constant="10" id="zaP-mr-dyV"/>
                                 </constraints>
@@ -213,7 +232,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="DG1-UO-C40" id="jS6-ah-989"/>
                         <outlet property="loginButton" destination="2rh-86-rQZ" id="qGl-uq-xpt"/>
+                        <outlet property="message" destination="Kep-wM-eV1" id="Yok-xG-VDi"/>
                         <outlet property="passwordTextField" destination="uiR-xu-STv" id="IRH-UK-c24"/>
                         <outlet property="registerLabel" destination="V0v-fr-tI9" id="65r-EZ-tJm"/>
                         <outlet property="signupButton" destination="gHb-am-CxC" id="NMh-7Y-bja"/>
@@ -228,7 +249,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="HCK-qu-NuY">
             <objects>
-                <tabBarController id="tgP-GX-9gN" customClass="TabBarViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="tgP-GX-9gN" customClass="TabBarViewController" customModule="Gurkha_s_Stamp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ffb-aY-yVi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

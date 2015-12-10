@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var registerLabel: UILabel!
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var signupButton: UIButton!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var message: UILabel!
     
     var signupMode = false
     
@@ -23,6 +25,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        activityIndicator.hidden = true
+        activityIndicator.hidesWhenStopped = true
         
     }
     
@@ -93,12 +97,23 @@ class LoginViewController: UIViewController {
         
     }
     
+    @available(iOS 8.0, *)
     func signup()
     {
+        var username = usernameTextField.text
+        let userPassword = passwordTextField.text
+        
+        // Ensure username is lowercase
+        username = username!.lowercaseString
+
+        self.message.text = ""
+        // Start activity indicator
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
         let user = PFUser()
-        user.username = usernameTextField.text
-        user.password = passwordTextField.text
-        user.email = usernameTextField.text
+        user.username = username
+        user.password = userPassword
+        user.email = username
         //user.emailVerified = false;
         // other fields can be set just like with PFObject
         //user["phone"] = "415-392-0202"
@@ -108,8 +123,24 @@ class LoginViewController: UIViewController {
             if let error = error {
                 let errorString = error.userInfo["error"] as? NSString
                 // Show the errorString somewhere and let the user try again.
+                self.activityIndicator.stopAnimating()
+                
+               // if let message: AnyObject = error!.userInfo!["error"] {
+                    self.message.text = "\(errorString)"
+               // }
             } else {
                 // Hooray! Let them use the app now.
+                // User needs to verify email address before continuing
+                let alertController = UIAlertController(title: "Email address verification",
+                    message: "We have sent you an email that contains a link - you must click this link before you can continue.",
+                    preferredStyle: UIAlertControllerStyle.Alert
+                )
+                alertController.addAction(UIAlertAction(title: "OK",
+                    style: UIAlertActionStyle.Default,
+                    handler: { alertController in self.processSignOut()})
+                )
+                // Display alert
+                self.presentViewController(alertController, animated: true, completion: nil)
             }
         }
     }
@@ -117,7 +148,17 @@ class LoginViewController: UIViewController {
     @available(iOS 8.0, *)
     func signin()
     {
-        PFUser.logInWithUsernameInBackground(usernameTextField.text!, password:passwordTextField.text!) {
+        self.message.text = ""
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
+        
+        var username = usernameTextField.text!
+        let userPassword = passwordTextField.text!
+        
+        // Ensure username is lowercase
+        username = username.lowercaseString
+        
+        PFUser.logInWithUsernameInBackground(username, password:userPassword) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 // Do stuff after successful login.
@@ -128,16 +169,45 @@ class LoginViewController: UIViewController {
                 }
                 else
                 {
-                    let alert = UIAlertController(title: "Error", message: "Please verify your email.", preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: "Email address verification", message: "We have sent you an email that contains a link - you must click this link before you can continue.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
 
                 }
             } else {
                 // The login failed. Check error to see why.
-                print("Error Log in!!!")
+                self.activityIndicator.stopAnimating()
+                let errorCode = error!.code as NSNumber
+                switch errorCode
+                {
+                case 100:
+                    self.message.text = ((error!.userInfo as NSDictionary)["error"] as! String) + " Please try again."
+                    break
+                case 101:
+                    let alert = UIAlertController(title: "Invalid username/password", message: "Please enter valid username and password.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    break
+                default:
+                    self.message.text = ((error!.userInfo as NSDictionary)["error"] as! String)
+                    break
+                    
+                }
+               
             }
         }
+    }
+    
+    // Sign the current user out of the app
+    func processSignOut() {
+        
+        // // Sign out
+        PFUser.logOut()
+        
+        // Display sign in / up view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") 
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     func isEmailVerified() ->Bool
