@@ -52,6 +52,14 @@ class PunchCardViewController: UIViewController {
     @IBAction func scanQRCodePressed(sender: UIButton) {
         self.performSegueWithIdentifier("punchCardToQRReaderSegue", sender: self)
     }
+    
+    @IBAction func logoutBarButtonItemPressed(sender: UIBarButtonItem) {
+        PFUser.logOut()
+        self.navigationController?.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
+        })
+    }
+    
     func setTitleLabel()
     {
         let htmlText = "<b>Gurkhas On The Hill</b><br/><a href=\"https://maps.google.com?saddr=Current+Location&daddr=40.0071601868,-105.2759399414\" target=\"_blank\">1310 College Ave Ste 230</a><br/>Boulder CO 80302<br/><a href=\"tel:303-443-1355\">303-443-1355</a></p>"

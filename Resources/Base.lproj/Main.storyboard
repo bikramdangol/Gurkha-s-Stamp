@@ -117,7 +117,13 @@
                             <constraint firstItem="Al8-W9-hYQ" firstAttribute="top" secondItem="mmZ-Sz-mBj" secondAttribute="bottom" constant="8" id="oIF-pG-ncT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="SjW-TF-b4Z"/>
+                    <navigationItem key="navigationItem" id="SjW-TF-b4Z">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="CCX-nz-ZNz">
+                            <connections>
+                                <action selector="logoutBarButtonItemPressed:" destination="ELZ-Zg-mha" id="o7C-G7-aRZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="countLabel" destination="LyA-gG-AyR" id="1pE-Uc-u93"/>
                         <outlet property="titleLabel" destination="QIH-75-nGM" id="EXr-HL-BU2"/>

@@ -160,6 +160,7 @@ class LoginViewController: UIViewController {
         
         PFUser.logInWithUsernameInBackground(username, password:userPassword) {
             (user: PFUser?, error: NSError?) -> Void in
+            self.activityIndicator.stopAnimating()
             if user != nil {
                 // Do stuff after successful login.
                 if self.isEmailVerified()
@@ -176,7 +177,6 @@ class LoginViewController: UIViewController {
                 }
             } else {
                 // The login failed. Check error to see why.
-                self.activityIndicator.stopAnimating()
                 let errorCode = error!.code as NSNumber
                 switch errorCode
                 {
