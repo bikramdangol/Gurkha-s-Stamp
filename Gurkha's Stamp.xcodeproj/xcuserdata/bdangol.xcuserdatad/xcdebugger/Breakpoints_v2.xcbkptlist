@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/PunchCardViewController.swift"
-            timestampString = "471423391.350091"
+            timestampString = "471509254.142727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/PunchCardViewController.swift"
-            timestampString = "471423391.350091"
+            timestampString = "471509254.142727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "fillStampsForTheUser()"
             landmarkType = "5">
          </BreakpointContent>

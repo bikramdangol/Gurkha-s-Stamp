@@ -14,6 +14,18 @@ class PunchCardViewController: UIViewController {
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var countLabel: UILabel!
+    
+    @IBOutlet var starImage1: UIImageView!
+    @IBOutlet var starImage2: UIImageView!
+    @IBOutlet var starImage3: UIImageView!
+    @IBOutlet var starImage4: UIImageView!
+    @IBOutlet var starImage5: UIImageView!
+    @IBOutlet var starImage6: UIImageView!
+    @IBOutlet var starImage7: UIImageView!
+    @IBOutlet var starImage8: UIImageView!
+    @IBOutlet var starImage9: UIImageView!
+    @IBOutlet var starImage10: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setTitleLabel()
@@ -41,6 +53,7 @@ class PunchCardViewController: UIViewController {
             {
                 print(stamps)
                 self.countLabel!.text = String(stamps!.count)
+                self.fillStars(stamps!.count);
             }
             else
             {
@@ -58,6 +71,48 @@ class PunchCardViewController: UIViewController {
         self.navigationController?.dismissViewControllerAnimated(true, completion: { () -> Void in
             
         })
+    }
+    
+    func fillStars(count:Int)
+    {
+        self.fillWithEmptyStars()
+        switch count
+        {
+        case 10: starImage10.image = UIImage(named: "starFilled")
+            fallthrough
+        case 9: starImage9.image = UIImage(named: "starFilled")
+            fallthrough
+        case 8: starImage8.image = UIImage(named: "starFilled")
+            fallthrough
+        case 7: starImage7.image = UIImage(named: "starFilled")
+            fallthrough
+        case 6: starImage6.image = UIImage(named: "starFilled")
+            fallthrough
+        case 5: starImage5.image = UIImage(named: "starFilled")
+            fallthrough
+        case 4: starImage4.image = UIImage(named: "starFilled")
+            fallthrough
+        case 3: starImage3.image = UIImage(named: "starFilled")
+            fallthrough
+        case 2: starImage2.image = UIImage(named: "starFilled")
+            fallthrough
+        case 1: starImage1.image = UIImage(named: "starFilled")
+        default: break
+        }
+    }
+    
+    func fillWithEmptyStars()
+    {
+        starImage1.image = UIImage(named: "starEmpty")
+        starImage2.image = UIImage(named: "starEmpty")
+        starImage3.image = UIImage(named: "starEmpty")
+        starImage4.image = UIImage(named: "starEmpty")
+        starImage5.image = UIImage(named: "starEmpty")
+        starImage6.image = UIImage(named: "starEmpty")
+        starImage7.image = UIImage(named: "starEmpty")
+        starImage8.image = UIImage(named: "starEmpty")
+        starImage9.image = UIImage(named: "starEmpty")
+        starImage10.image = UIImage(named: "starEmpty")
     }
     
     func setTitleLabel()
