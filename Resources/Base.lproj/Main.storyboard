@@ -7,7 +7,7 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Detail View Controller-->
+        <!--Details-->
         <scene sceneID="dpn-ic-UQ9">
             <objects>
                 <viewController id="f9h-pJ-40c" customClass="DetailViewController" customModule="Gurkha_s_Stamp" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,7 +36,7 @@
                             <constraint firstItem="tz0-rR-jfw" firstAttribute="leading" secondItem="KZA-Hv-8xp" secondAttribute="leadingMargin" id="rjd-Kf-ET6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="iyM-HK-QqQ"/>
+                    <tabBarItem key="tabBarItem" title="Details" image="infoImage" id="iyM-HK-QqQ"/>
                     <connections>
                         <outlet property="detailLabel" destination="tz0-rR-jfw" id="RcL-1s-6IZ"/>
                     </connections>
@@ -505,6 +505,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="infoImage" width="29" height="29"/>
         <image name="logo.png" width="566" height="404"/>
         <image name="map.png" width="1024" height="313"/>
         <image name="starEmpty.png" width="128" height="130"/>
