@@ -48,18 +48,30 @@ class PunchCardViewController: UIViewController {
        
         let query = PFQuery(className:"Stamp")
         query.whereKey("user", equalTo: user)
-        query.findObjectsInBackgroundWithBlock { (stamps, error) -> Void in
+        query.countObjectsInBackgroundWithBlock { (count, error) -> Void in
             if error == nil
             {
-                print(stamps)
-                self.countLabel!.text = String(stamps!.count)
-                self.fillStars(stamps!.count);
+                self.countLabel!.text = String(count)
+                self.fillStars(Int(count));
             }
             else
             {
                 print(error)
             }
+
         }
+//        query.findObjectsInBackgroundWithBlock { (stamps, error) -> Void in
+//            if error == nil
+//            {
+//                //print(stamps)
+//                self.countLabel!.text = String(stamps!.count)
+//                self.fillStars(stamps!.count);
+//            }
+//            else
+//            {
+//                print(error)
+//            }
+//        }
     }
     
     @IBAction func scanQRCodePressed(sender: UIButton) {
@@ -68,17 +80,22 @@ class PunchCardViewController: UIViewController {
     
     @IBAction func logoutBarButtonItemPressed(sender: UIBarButtonItem) {
         PFUser.logOut()
-        self.navigationController?.dismissViewControllerAnimated(true, completion: { () -> Void in
-            
-        })
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func fillStars(count:Int)
+    func fillStars(var count:Int)
     {
         self.fillWithEmptyStars()
+        let tens = count/10
+        count = count%10
         switch count
         {
-        case 10: starImage10.image = UIImage(named: "starFilled")
+        case 0:
+            if tens == 0
+            {
+                break;
+            }
+            starImage10.image = UIImage(named: "starFilled")
             fallthrough
         case 9: starImage9.image = UIImage(named: "starFilled")
             fallthrough

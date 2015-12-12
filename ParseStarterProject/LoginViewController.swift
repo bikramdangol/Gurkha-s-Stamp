@@ -36,6 +36,7 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        self.passwordTextField.text = ""
         self.moveToHomeScreenIfAlreadyLoggedIn()
        
     }
@@ -120,6 +121,7 @@ class LoginViewController: UIViewController {
         
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
+            self.activityIndicator.stopAnimating()
             if let error = error {
                 let errorString = error.userInfo["error"] as? NSString
                 // Show the errorString somewhere and let the user try again.
@@ -193,7 +195,6 @@ class LoginViewController: UIViewController {
                     break
                     
                 }
-               
             }
         }
     }
@@ -221,7 +222,6 @@ class LoginViewController: UIViewController {
     }
     
     func isValidEmail(testStr:String) -> Bool {
-        // println("validate calendar: \(testStr)")
         let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
