@@ -484,11 +484,11 @@
             </objects>
             <point key="canvasLocation" x="-693" y="-118"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Punch Card-->
         <scene sceneID="GIn-eV-C29">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z9f-YH-lB2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" selectedImage="starFilled.png" systemItem="favorites" id="GjQ-BP-yOi"/>
+                    <tabBarItem key="tabBarItem" title="Punch Card" image="starImage" selectedImage="starImage" id="GjQ-BP-yOi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="G3D-A3-QyS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -508,6 +508,6 @@
         <image name="logo.png" width="566" height="404"/>
         <image name="map.png" width="1024" height="313"/>
         <image name="starEmpty.png" width="128" height="130"/>
-        <image name="starFilled.png" width="130" height="129"/>
+        <image name="starImage" width="42" height="40"/>
     </resources>
 </document>
