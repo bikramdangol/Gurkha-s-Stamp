@@ -43,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hN1-ZM-exe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127" y="212"/>
+            <point key="canvasLocation" x="75" y="11"/>
         </scene>
         <!--Punch Card View Controller-->
         <scene sceneID="3DQ-wO-MsO">
@@ -478,17 +478,101 @@
                     <connections>
                         <segue destination="Z9f-YH-lB2" kind="relationship" relationship="viewControllers" id="Q9G-UG-Iie"/>
                         <segue destination="f9h-pJ-40c" kind="relationship" relationship="viewControllers" id="jcG-7o-dhC"/>
+                        <segue destination="GSJ-O3-XVL" kind="relationship" relationship="viewControllers" id="3fF-3h-quc"/>
+                        <segue destination="Gae-tA-Ro1" kind="relationship" relationship="viewControllers" id="fc5-kc-7ix"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMe-fB-rzY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-693" y="-118"/>
         </scene>
+        <!--Deals-->
+        <scene sceneID="vwg-hM-f2h">
+            <objects>
+                <viewController id="GSJ-O3-XVL" customClass="DealsViewController" customModule="Gurkha_s_Stamp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CAB-hl-Syz"/>
+                        <viewControllerLayoutGuide type="bottom" id="YfE-lS-lgK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UyR-Km-GsE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We currently do not have any deals available. Please check back soon!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYH-QF-Azt">
+                                <rect key="frame" x="20" y="270" width="560" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="kew-I1-Asv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yYH-QF-Azt" firstAttribute="centerY" secondItem="UyR-Km-GsE" secondAttribute="centerY" id="2Jn-xQ-4gE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yYH-QF-Azt" secondAttribute="trailing" id="kq8-Za-yy8"/>
+                            <constraint firstItem="yYH-QF-Azt" firstAttribute="leading" secondItem="UyR-Km-GsE" secondAttribute="leadingMargin" id="wPc-Fk-ewL"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Deals" image="dealsImage" id="kEC-Di-2GO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c5a-ay-30C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-41" y="764"/>
+        </scene>
+        <!--My Rewards-->
+        <scene sceneID="M8N-Zk-Dwp">
+            <objects>
+                <viewController id="Gae-tA-Ro1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WaI-Cz-Rqk"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ngs-AE-Soc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z06-sY-AUt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfk-Nk-7sa">
+                                <rect key="frame" x="20" y="20" width="72" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="B98-Jc-Vc4"/>
+                                    <constraint firstAttribute="width" constant="72" id="EFf-dZ-VRe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Construction." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoc-LT-lUP">
+                                <rect key="frame" x="20" y="49" width="163" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4wF-b7-HC1"/>
+                                    <constraint firstAttribute="width" constant="163" id="skZ-4Q-ygM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eoc-LT-lUP" firstAttribute="leading" secondItem="z06-sY-AUt" secondAttribute="leadingMargin" id="5nU-kK-o88"/>
+                            <constraint firstItem="Zfk-Nk-7sa" firstAttribute="top" secondItem="WaI-Cz-Rqk" secondAttribute="bottom" id="T20-OH-1qR"/>
+                            <constraint firstItem="Zfk-Nk-7sa" firstAttribute="leading" secondItem="z06-sY-AUt" secondAttribute="leadingMargin" id="h0D-RL-WcM"/>
+                            <constraint firstItem="eoc-LT-lUP" firstAttribute="top" secondItem="Zfk-Nk-7sa" secondAttribute="bottom" constant="8" id="xtl-TF-cPo"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My Rewards" image="rewardImage" id="55w-th-Fxf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z68-l3-3Re" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-693" y="764"/>
+        </scene>
         <!--Punch Card-->
         <scene sceneID="GIn-eV-C29">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z9f-YH-lB2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Punch Card" image="starImage" selectedImage="starImage" id="GjQ-BP-yOi"/>
+                    <tabBarItem key="tabBarItem" title="Punch Card" image="starImage" id="GjQ-BP-yOi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="G3D-A3-QyS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -501,14 +585,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCk-iA-5KT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7" y="-472"/>
+            <point key="canvasLocation" x="75" y="-661"/>
         </scene>
     </scenes>
     <resources>
-        <image name="infoImage" width="29" height="29"/>
+        <image name="dealsImage" width="29" height="29"/>
+        <image name="infoImage" width="40" height="40"/>
         <image name="logo.png" width="566" height="404"/>
         <image name="map.png" width="1024" height="313"/>
+        <image name="rewardImage" width="40" height="40"/>
         <image name="starEmpty.png" width="128" height="130"/>
-        <image name="starImage" width="42" height="40"/>
+        <image name="starImage" width="40" height="40"/>
     </resources>
 </document>

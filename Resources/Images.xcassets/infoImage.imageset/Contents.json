@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "infoImage small.png",
+      "filename" : "infoImageCroped40.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "infoImage.png",
+      "filename" : "infoImageCroped60.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "070982-glossy-silver-icon-alphanumeric-information3-sc49.png",
+      "filename" : "infoImageCroped.png",
       "scale" : "3x"
     }
   ],
