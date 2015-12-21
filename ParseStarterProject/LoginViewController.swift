@@ -19,7 +19,6 @@ class LoginViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var message: UILabel!
     
-    var signupMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,16 +53,7 @@ class LoginViewController: UIViewController {
         if usernameTextField.text != nil && isValidEmail(usernameTextField.text!) &&
             passwordTextField.text != nil
         {
-            if signupMode
-            {
-                self.signup()
-            }
-            else
-            {
-                
-                self.signin()
-                
-            }
+            self.signin()
             
         }
         else
@@ -77,76 +67,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    @IBAction func signupButtonPressed(sender: UIButton) {
-        if signupMode
-        {
-            signupMode = false;
-            loginButton.setTitle("Login", forState: .Normal)
-            signupButton.setTitle("Sign up", forState: .Normal)
-            registerLabel.text = "Not Registered Yet?"
-            
-            
-        }
-        else
-        {
-            signupMode = true;
-            loginButton.setTitle("Sign up", forState: .Normal)
-            signupButton.setTitle("Login", forState: .Normal)
-            registerLabel.text = "Already Registered?"
-            
-        }
-        
-    }
-    
-    @available(iOS 8.0, *)
-    func signup()
-    {
-        var username = usernameTextField.text
-        let userPassword = passwordTextField.text
-        
-        // Ensure username is lowercase
-        username = username!.lowercaseString
-
-        self.message.text = ""
-        // Start activity indicator
-        activityIndicator.hidden = false
-        activityIndicator.startAnimating()
-        let user = PFUser()
-        user.username = username
-        user.password = userPassword
-        user.email = username
-        //user.emailVerified = false;
-        // other fields can be set just like with PFObject
-        //user["phone"] = "415-392-0202"
-        
-        user.signUpInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in
-            self.activityIndicator.stopAnimating()
-            if let error = error {
-                let errorString = error.userInfo["error"] as? NSString
-                // Show the errorString somewhere and let the user try again.
-                self.activityIndicator.stopAnimating()
-                
-               // if let message: AnyObject = error!.userInfo!["error"] {
-                    self.message.text = "\(errorString)"
-               // }
-            } else {
-                // Hooray! Let them use the app now.
-                // User needs to verify email address before continuing
-                let alertController = UIAlertController(title: "Email address verification",
-                    message: "We have sent you an email that contains a link - you must click this link before you can continue.",
-                    preferredStyle: UIAlertControllerStyle.Alert
-                )
-                alertController.addAction(UIAlertAction(title: "OK",
-                    style: UIAlertActionStyle.Default,
-                    handler: { alertController in self.processSignOut()})
-                )
-                // Display alert
-                self.presentViewController(alertController, animated: true, completion: nil)
-            }
-        }
-    }
-    
+       
     @available(iOS 8.0, *)
     func signin()
     {
@@ -227,6 +148,13 @@ class LoginViewController: UIViewController {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluateWithObject(testStr)
     }
+    
+    @IBAction func forgotPasswordButtonPressed(sender: UIButton) {
+        
+        self.performSegueWithIdentifier("forgotPasswordViewSegue", sender: nil)
+    }
+    
+    
     /*
     // MARK: - Navigation
     
