@@ -10,22 +10,17 @@ import UIKit
 import Parse
 import AVFoundation
 
+@available(iOS 8.0, *)
 class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelegate  {
     lazy var reader = QRCodeReaderViewController(metadataObjectTypes: [AVMetadataObjectTypeQRCode])
 
+    var barCodeString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 8.0, *)
-        {
-            self.readQRCode()
-        }
-        else
-        {
-            // Fallback on earlier versions
-        }
-
-        // Do any additional setup after loading the view.
+        //self.getBarCodeString()
+        self.readQRCode()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,8 +28,20 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @available(iOS 8.0, *)
+    func getBarCodeString() {
+        
+        let query = PFQuery(className:"Barcode")
+        query.getFirstObjectInBackgroundWithBlock {
+            (pfObject: PFObject?, error: NSError?) -> Void in
+            if error == nil || pfObject != nil {
+                self.barCodeString = pfObject?["barcode"] as! String
+            }
+            else {
+                 print("Problem in getting Barcode")
+            }
+        }
+    }
+   
     func readQRCode()
     {
         if QRCodeReader.supportsMetadataObjectTypes()
@@ -65,8 +72,6 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
     
     func showErrorMessage()
     {
-        if #available(iOS 8.0, *)
-        {
             let alert = UIAlertController(title: "Error", message: "Invalid Code. Please scan the QR Code again.", preferredStyle: UIAlertControllerStyle.Alert)
             let cancelAction = UIAlertAction(
                 title: "Cancel",
@@ -85,24 +90,33 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
             
             self.presentViewController(alert, animated: true, completion: nil)
 
-        }
-        else
-        {
-            // Fallback on earlier versions
-        }
+       
     }
     
     func saveStamp()
     {
-        let stamp = PFObject(className:"Stamp")
-        stamp["user"] = PFUser.currentUser()
-        stamp.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success)
-            {
-                // The object has been saved.
-                if #available(iOS 8.0, *)
-                {
+        let user = PFUser.currentUser()!
+        let getStampQuery = PFQuery(className: "Stamp")
+        getStampQuery.whereKey("user", equalTo: user)
+        getStampQuery.findObjectsInBackgroundWithBlock { (stamps:[PFObject]?, error:NSError?) -> Void in
+            
+            var stampCount = 0
+            var stamp:PFObject
+            if stamps?.count == 1 {
+                stamp = (stamps?[0])!
+                stampCount = stamp["stampcount"] as! Int
+                
+            }
+            else {
+                stamp = PFObject(className: "Stamp")
+                stamp["user"] = user
+
+            }
+            
+            stamp["stampcount"] = stampCount + 1
+            stamp.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
                     let alert = UIAlertController(title: "Success", message: "Stamped Successfully!!!.", preferredStyle: UIAlertControllerStyle.Alert)
                     let confirmAction = UIAlertAction(
                         title: "OK", style: UIAlertActionStyle.Default) { (action) in
@@ -111,17 +125,7 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
                     }
                     alert.addAction(confirmAction)
                     self.presentViewController(alert, animated: true, completion: nil)
-                }
-                else
-                {
-                    // Fallback on earlier versions
-                }
-
-            } else
-            {
-                // There was a problem, check error.description
-                if #available(iOS 8.0, *)
-                {
+                } else {
                     let alert = UIAlertController(title: "Error", message: "Something went wrong. Please scan the QR Code again.", preferredStyle: UIAlertControllerStyle.Alert)
                     let confirmAction = UIAlertAction(
                         title: "OK", style: UIAlertActionStyle.Default) { (action) in
@@ -130,14 +134,11 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
                     }
                     alert.addAction(confirmAction)
                     self.presentViewController(alert, animated: true, completion: nil)
-                }
-                else
-                {
-                    // Fallback on earlier versions
+                    
+                    print("Problem in saving stamp")
                 }
             }
         }
-
     }
     
     // MARK: - QRCodeReader Delegate Methods
@@ -145,25 +146,18 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
     
     func reader(reader: QRCodeReaderViewController, didScanResult result: String) {
         self.dismissViewControllerAnimated(true, completion: { [unowned self] () -> Void in
-            if #available(iOS 8.0, *)
+            if result == self.barCodeString
             {
-                if result == "Bikram is learning iOS."
-                {
-                    self.saveStamp()
-                }
-                else
-                {
-                    self.showErrorMessage()
-                }
+                self.saveStamp()
             }
             else
             {
-                // Fallback on earlier versions
+                self.showErrorMessage()
             }
             
             })
         
-        }
+    }
     
     func readerDidCancel(reader: QRCodeReaderViewController) {
         self.dismissViewControllerAnimated(true, completion: nil)

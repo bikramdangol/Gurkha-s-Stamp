@@ -220,6 +220,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0aY-L3-ohC">
+                                <rect key="frame" x="107" y="489" width="106" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Redeem Stamp"/>
+                                <connections>
+                                    <action selector="reddemButtonPressed:" destination="ELZ-Zg-mha" eventType="touchUpInside" id="qxq-UX-fAl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -238,11 +246,14 @@
                             <constraint firstItem="QIH-75-nGM" firstAttribute="height" secondItem="Al8-W9-hYQ" secondAttribute="height" id="O3Z-Td-8qk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LyA-gG-AyR" secondAttribute="trailing" constant="8" id="Sr3-rv-FFg"/>
                             <constraint firstItem="u8e-1O-lN4" firstAttribute="top" secondItem="Al8-W9-hYQ" secondAttribute="bottom" constant="8" id="WoU-6d-HQ8"/>
+                            <constraint firstItem="0aY-L3-ohC" firstAttribute="leading" secondItem="JGC-Ah-Dq9" secondAttribute="leadingMargin" constant="87" id="YCM-7R-1gT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mmZ-Sz-mBj" secondAttribute="trailing" constant="-20" id="aiq-df-UjP"/>
                             <constraint firstItem="QIH-75-nGM" firstAttribute="top" secondItem="mmZ-Sz-mBj" secondAttribute="bottom" constant="8" id="c9S-5d-AwE"/>
+                            <constraint firstItem="0aY-L3-ohC" firstAttribute="centerX" secondItem="rBh-qV-nLo" secondAttribute="centerX" id="gF4-n4-dQM"/>
                             <constraint firstItem="rBh-qV-nLo" firstAttribute="leading" secondItem="JGC-Ah-Dq9" secondAttribute="leadingMargin" id="kBn-p2-DW3"/>
                             <constraint firstItem="rBh-qV-nLo" firstAttribute="trailing" secondItem="JGC-Ah-Dq9" secondAttribute="trailingMargin" id="lNP-36-72g"/>
                             <constraint firstItem="Al8-W9-hYQ" firstAttribute="top" secondItem="mmZ-Sz-mBj" secondAttribute="bottom" constant="8" id="oIF-pG-ncT"/>
+                            <constraint firstItem="DHb-nF-64t" firstAttribute="top" secondItem="0aY-L3-ohC" secondAttribute="bottom" id="tIa-Wl-X7w"/>
                             <constraint firstItem="kRA-K7-skk" firstAttribute="leading" secondItem="JGC-Ah-Dq9" secondAttribute="leadingMargin" id="tvf-VW-qAD"/>
                             <constraint firstItem="KzE-EI-iiz" firstAttribute="top" secondItem="u8e-1O-lN4" secondAttribute="bottom" constant="8" id="ugF-NB-Mmk"/>
                         </constraints>
@@ -256,6 +267,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="countLabel" destination="LyA-gG-AyR" id="1pE-Uc-u93"/>
+                        <outlet property="redeemButton" destination="0aY-L3-ohC" id="shq-7y-bxo"/>
+                        <outlet property="scanButton" destination="u8e-1O-lN4" id="VGx-FZ-HhT"/>
                         <outlet property="starImage1" destination="hZ1-lF-r7L" id="rjE-P4-T67"/>
                         <outlet property="starImage10" destination="JGa-Ol-aSZ" id="jhn-lX-cBY"/>
                         <outlet property="starImage2" destination="hOX-PB-NBI" id="tk5-lP-gNL"/>
@@ -272,7 +285,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URx-Hs-taf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="436.80000000000001" y="-446.82666666666665"/>
+            <point key="canvasLocation" x="436" y="-447"/>
         </scene>
         <!--Scan QR Code for stamping-->
         <scene sceneID="O6C-5g-vRF">
@@ -436,6 +449,7 @@
                         <outlet property="usernameTextField" destination="sdL-wr-bpN" id="Mzp-Du-3IB"/>
                         <segue destination="tgP-GX-9gN" kind="modal" identifier="loginToHomeSegue" id="f4l-rf-cUo"/>
                         <segue destination="XIB-tx-50Z" kind="modal" identifier="forgotPasswordViewSegue" id="vQs-46-oI4"/>
+                        <segue destination="wXZ-mS-5Ke" kind="modal" identifier="loginToAdminView" id="076-zs-sDb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxm-NI-wcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -732,6 +746,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7op-WV-8Z6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-834" y="963"/>
+        </scene>
+        <!--Admin View Controller-->
+        <scene sceneID="XxQ-om-mUK">
+            <objects>
+                <viewController id="wXZ-mS-5Ke" customClass="AdminViewController" customModule="Gurkha_s_Stamp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bPO-Pe-KYI"/>
+                        <viewControllerLayoutGuide type="bottom" id="POE-2K-SVv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W9P-WN-CRU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVo-ct-HZ3">
+                                <rect key="frame" x="19" y="20" width="79" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="wXZ-mS-5Ke" eventType="touchUpInside" id="vys-lW-Lbc"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OgU-Ch-gZl">
+                                <rect key="frame" x="20" y="52" width="280" height="496"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customerCell" id="fpa-ak-iPB" customClass="CustomerTableCell" customModule="Gurkha_s_Stamp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fpa-ak-iPB" id="DDw-by-Jl8">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzE-Hv-DH6">
+                                                    <rect key="frame" x="8" y="11" width="92" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWA-OG-5Y7">
+                                                    <rect key="frame" x="191" y="7" width="74" height="30"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="Approve">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="approveButtonPressed:" destination="fpa-ak-iPB" eventType="touchUpInside" id="26X-kQ-SYe"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="approveButton" destination="mWA-OG-5Y7" id="u6c-2c-cVo"/>
+                                            <outlet property="customerEmail" destination="KzE-Hv-DH6" id="mgt-D6-iZ7"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="customerTableView" destination="OgU-Ch-gZl" id="RXk-8B-aTP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kjH-iv-UES" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-482" y="963"/>
         </scene>
     </scenes>
     <resources>

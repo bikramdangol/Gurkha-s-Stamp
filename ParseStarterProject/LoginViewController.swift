@@ -44,7 +44,9 @@ class LoginViewController: UIViewController {
     {
         if self.isEmailVerified()
         {
-            self.performSegueWithIdentifier("loginToHomeSegue", sender: nil)
+            
+            self.checkRoleAndLogin(PFUser.currentUser()!)
+            
         }
     }
     
@@ -88,8 +90,7 @@ class LoginViewController: UIViewController {
                 // Do stuff after successful login.
                 if self.isEmailVerified()
                 {
-                    self.performSegueWithIdentifier("loginToHomeSegue", sender: nil)
-                    print("Your are logged in!!!")
+                    self.checkRoleAndLogin(user!)
                 }
                 else
                 {
@@ -118,6 +119,18 @@ class LoginViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func checkRoleAndLogin(user:PFUser) {
+        if user["role"] as! String == "admin" {
+            self.performSegueWithIdentifier("loginToAdminView", sender: nil)
+            print("Your are logged in as Admin!!!")
+        }
+        else {
+            self.performSegueWithIdentifier("loginToHomeSegue", sender: nil)
+            print("Your are logged in!!!")
+        }
+
     }
     
     // Sign the current user out of the app

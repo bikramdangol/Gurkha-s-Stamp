@@ -11,6 +11,7 @@ import Parse
 
 class PunchCardViewController: UIViewController {
 
+    @IBOutlet weak var scanButton: UIButton!
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var countLabel: UILabel!
@@ -25,6 +26,60 @@ class PunchCardViewController: UIViewController {
     @IBOutlet var starImage8: UIImageView!
     @IBOutlet var starImage9: UIImageView!
     @IBOutlet var starImage10: UIImageView!
+    @IBOutlet weak var redeemButton: UIButton!
+    
+    @IBAction func reddemButtonPressed(sender: UIButton) {
+        self.redeemStamp()
+    }
+    
+    func redeemStamp()
+    {
+        let user = PFUser.currentUser()!
+        
+        let getRedeemObjectQuery = PFQuery(className:"Redeem")
+        getRedeemObjectQuery.whereKey("user", equalTo:user)
+        getRedeemObjectQuery.findObjectsInBackgroundWithBlock{ (objects:[PFObject]?, error:NSError?) -> Void in
+            var redeem:PFObject
+            
+            if objects?.count == 0 {
+                redeem = PFObject(className:"Redeem")
+                redeem["user"] = user
+            }
+            else {
+                redeem = (objects?[0])!
+            }
+            
+            redeem["redeem"] = "Y"
+            redeem["approved"] = "N"
+            
+            redeem.saveInBackground()
+        }
+        
+        
+        
+            
+//            let alert = UIAlertController(title: "Success", message: "Stamped Successfully!!!.", preferredStyle: UIAlertControllerStyle.Alert)
+//            let confirmAction = UIAlertAction(
+//                title: "OK", style: UIAlertActionStyle.Default) { (action) in
+//                    self.goBack()
+//                    
+//            }
+//            alert.addAction(confirmAction)
+//            self.presentViewController(alert, animated: true, completion: nil)
+       
+            
+//            let alert = UIAlertController(title: "Error", message: "Something went wrong. Please scan the QR Code again.", preferredStyle: UIAlertControllerStyle.Alert)
+//            let confirmAction = UIAlertAction(
+//                title: "OK", style: UIAlertActionStyle.Default) { (action) in
+//                    self.goBack()
+//                    
+//            }
+//            alert.addAction(confirmAction)
+//            self.presentViewController(alert, animated: true, completion: nil)
+            
+            //print("Problem in saving")
+       
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,33 +100,31 @@ class PunchCardViewController: UIViewController {
     func fillStampsForTheUser()
     {
         let user = PFUser.currentUser()!
-       
-        let query = PFQuery(className:"Stamp")
-        query.whereKey("user", equalTo: user)
-        query.countObjectsInBackgroundWithBlock { (count, error) -> Void in
-            if error == nil
-            {
-                self.countLabel!.text = String(count)
-                self.fillStars(Int(count));
+        let getStampQuery = PFQuery(className: "Stamp")
+        getStampQuery.whereKey("user", equalTo: user)
+        getStampQuery.findObjectsInBackgroundWithBlock { (stamps:[PFObject]?, error:NSError?) -> Void in
+            
+            var stampCount = 0
+            if error == nil && stamps?.count == 1 {
+                let stamp = stamps?[0]
+                stampCount = stamp?["stampcount"] as! Int
             }
-            else
-            {
-                print(error)
+            else {
+                print("Problem on getting stamp")
             }
-
+            self.fillStars(stampCount);
+            self.countLabel!.text = String(stampCount)
+            
+            if stampCount == 10 {
+                self.scanButton.enabled = false
+                self.redeemButton.hidden = false
+            }
+            else {
+                self.scanButton.enabled = true
+                self.redeemButton.hidden = true
+            }
         }
-//        query.findObjectsInBackgroundWithBlock { (stamps, error) -> Void in
-//            if error == nil
-//            {
-//                //print(stamps)
-//                self.countLabel!.text = String(stamps!.count)
-//                self.fillStars(stamps!.count);
-//            }
-//            else
-//            {
-//                print(error)
-//            }
-//        }
+        
     }
     
     @IBAction func scanQRCodePressed(sender: UIButton) {

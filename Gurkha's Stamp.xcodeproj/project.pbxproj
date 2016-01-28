@@ -32,8 +32,11 @@
 		59EA96821C17F7E9000F19DC /* punchCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EA96811C17F7E9000F19DC /* punchCard.png */; };
 		59EA96841C18048B000F19DC /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EA96831C18048B000F19DC /* map.png */; };
 		59EA96861C180626000F19DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EA96851C180626000F19DC /* DetailViewController.swift */; };
+		5F19188F1C2A59DC002F0A1B /* CustomerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F19188E1C2A59DC002F0A1B /* CustomerTableCell.swift */; settings = {ASSET_TAGS = (); }; };
 		5F44150F1C274CF400290129 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F44150E1C274CF400290129 /* ResetPasswordViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		5F4415111C274D1100290129 /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4415101C274D1100290129 /* RegisterUserViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		5F9B2B5E1C29E87000912C39 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B2B5D1C29E87000912C39 /* AdminViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		5F9B2B601C29E8A000912C39 /* CustomerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B2B5F1C29E8A000912C39 /* CustomerViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -71,8 +74,11 @@
 		59EA96811C17F7E9000F19DC /* punchCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = punchCard.png; sourceTree = "<group>"; };
 		59EA96831C18048B000F19DC /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		59EA96851C180626000F19DC /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
+		5F19188E1C2A59DC002F0A1B /* CustomerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerTableCell.swift; sourceTree = "<group>"; };
 		5F44150E1C274CF400290129 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		5F4415101C274D1100290129 /* RegisterUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
+		5F9B2B5D1C29E87000912C39 /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
+		5F9B2B5F1C29E8A000912C39 /* CustomerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerViewCell.swift; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,6 +179,9 @@
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 				5F44150E1C274CF400290129 /* ResetPasswordViewController.swift */,
 				5F4415101C274D1100290129 /* RegisterUserViewController.swift */,
+				5F9B2B5D1C29E87000912C39 /* AdminViewController.swift */,
+				5F9B2B5F1C29E8A000912C39 /* CustomerViewCell.swift */,
+				5F19188E1C2A59DC002F0A1B /* CustomerTableCell.swift */,
 			);
 			name = "Gurkha's Stamp";
 			path = ParseStarterProject;
@@ -310,12 +319,15 @@
 				596006CF1C1E845900D4BFBA /* DealsViewController.swift in Sources */,
 				59EA96721C1791FE000F19DC /* LoginViewController.swift in Sources */,
 				5F44150F1C274CF400290129 /* ResetPasswordViewController.swift in Sources */,
+				5F9B2B5E1C29E87000912C39 /* AdminViewController.swift in Sources */,
 				59EA96701C1790FC000F19DC /* TabBarViewController.swift in Sources */,
 				596DCFE61C1A3A1D00764B3A /* QRCodeViewController.swift in Sources */,
 				596DCFDF1C1944EA00764B3A /* QRReaderViewController.swift in Sources */,
 				596DCFE51C1A3A1D00764B3A /* QRCodeReader.swift in Sources */,
+				5F9B2B601C29E8A000912C39 /* CustomerViewCell.swift in Sources */,
 				596DCFE81C1A3A1D00764B3A /* SwitchCameraButton.swift in Sources */,
 				5F4415111C274D1100290129 /* RegisterUserViewController.swift in Sources */,
+				5F19188F1C2A59DC002F0A1B /* CustomerTableCell.swift in Sources */,
 				59EA96861C180626000F19DC /* DetailViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				59EA96741C17D1C4000F19DC /* PunchCardViewController.swift in Sources */,
