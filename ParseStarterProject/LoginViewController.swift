@@ -27,6 +27,31 @@ class LoginViewController: UIViewController {
         activityIndicator.isHidden = true
         activityIndicator.hidesWhenStopped = true
         
+        /*let object:PFObject = PFObject(className: "TestObject")
+        object["bar"] = "foo"
+        object.saveInBackground { (success, error) in
+            if error != nil
+            {
+                print(error)
+            }else{
+                
+                print("Object Saved!")
+            }
+        }
+        
+        let user = PFUser()
+        user.username = "b1@mailinator.com"
+        user.email = "b1@mailinator.com"
+        
+        user.password = "b1"
+        user.signUpInBackground { (success, error) in
+            if(error != nil){
+                print(error)
+            }else{
+                print("User Saved!")
+            }
+        }*/
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -124,7 +149,7 @@ class LoginViewController: UIViewController {
     }
     
     func checkRoleAndLogin(_ user:PFUser) {
-        if user["role"] as! String == "admin" {
+        if false && user["role"] as! String == "admin" {
             self.performSegue(withIdentifier: "loginToAdminView", sender: nil)
             print("Your are logged in as Admin!!!")
         }
@@ -212,7 +237,7 @@ class LoginViewController: UIViewController {
     {
         
         let currentUser = PFUser.current()
-        if currentUser != nil && currentUser!.username != nil && currentUser!["emailVerified"] as! String == "true"
+        if currentUser != nil && currentUser!.username != nil && currentUser!["emailVerified"] as! Bool == true
         {
             return true
         }

@@ -102,9 +102,9 @@ class RegisterUserViewController: UIViewController {
         user.username = username
         user.password = userPassword
         user.email = username
-        user["emailVerified"] = "true"
+        user["emailVerified"] = true
         user["role"] = "customer"
-        user["redeem"] = "false"
+        user["redeem"] = false
        
         
         user.signUpInBackground {

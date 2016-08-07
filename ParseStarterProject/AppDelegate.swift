@@ -33,9 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration)
 -> Void in
-            ParseMutableClientConfiguration.applicationId = "GurkhazStampBoulder4651WheatRidge16"
+           /* ParseMutableClientConfiguration.applicationId = "GurkhazStampBoulder4651WheatRidge16"
             ParseMutableClientConfiguration.clientKey = "GurkhazStampMaster7922274Bikram"
-            ParseMutableClientConfiguration.server = "https://gurkhazstamp.herokuapp.com/parse"
+            ParseMutableClientConfiguration.server = "https://gurkhazstamp.herokuapp.com/parse"*/
+            
+            
+            ParseMutableClientConfiguration.applicationId = "d8f59af337d3b3e36ebf63eef5195a4ba7d3c67d"
+            ParseMutableClientConfiguration.clientKey = "0c32e66de3e1f3b90e23233497ae9c9c3d196b88"
+            ParseMutableClientConfiguration.server = "http://ec2-54-218-115-173.us-west-2.compute.amazonaws.com/parse"
             })
         Parse.initialize(with: parseConfiguration)
         // ****************************************************************************
