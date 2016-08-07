@@ -30,7 +30,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func getCustomers() {
         let query = PFUser.query()
-        query!.whereKey("role", equalTo:"")
+        query!.whereKey("role", equalTo:"customer")
         do {
             let customers = try query?.findObjects()
             customerList = customers!
@@ -52,10 +52,15 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCellWithIdentifier("customerCell", forIndexPath: indexPath) as! CustomerTableCell
         
         let row = indexPath.row
-        let user = customerList[row]
-        let isRedeemReady = user["redeem"] as! Bool
-        cell.customerEmail.text = user["username"] as? String
-        cell.approveButton.hidden = !isRedeemReady
+        if let user = customerList[row] as? [String: AnyObject]
+        {
+            let isRedeemReady = user["redeem"] as! String == "true"
+            cell.customerEmail.text = user["username"] as? String
+            cell.approveButton.hidden = !isRedeemReady
+        }
+        
+        
+        
         return cell
     }
     

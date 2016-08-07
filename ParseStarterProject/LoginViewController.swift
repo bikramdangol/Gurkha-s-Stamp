@@ -44,7 +44,6 @@ class LoginViewController: UIViewController {
     {
         if self.isEmailVerified()
         {
-            
             self.checkRoleAndLogin(PFUser.currentUser()!)
             
         }
@@ -127,10 +126,64 @@ class LoginViewController: UIViewController {
             print("Your are logged in as Admin!!!")
         }
         else {
+            if #available(iOS 8.0, *) {
+                //saveStamp()
+            } else {
+                // Fallback on earlier versions
+            }
             self.performSegueWithIdentifier("loginToHomeSegue", sender: nil)
             print("Your are logged in!!!")
         }
 
+    }
+    
+    @available(iOS 8.0, *)
+    func saveStamp()
+    {
+        let user = PFUser.currentUser()!
+        let getStampQuery = PFQuery(className: "Stamp")
+        getStampQuery.whereKey("user", equalTo: user)
+        getStampQuery.findObjectsInBackgroundWithBlock { (stamps:[PFObject]?, error:NSError?) -> Void in
+            
+            var stampCount = 0
+            var stamp:PFObject
+            if stamps?.count == 1 {
+                stamp = (stamps?[0])!
+                stampCount = stamp["stampcount"] as! Int
+                
+            }
+            else {
+                stamp = PFObject(className: "Stamp")
+                stamp["user"] = user
+                
+            }
+            
+            stamp["stampcount"] = stampCount + 1
+            stamp.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    let alert = UIAlertController(title: "Success", message: "Stamped Successfully!!!.", preferredStyle: UIAlertControllerStyle.Alert)
+                    let confirmAction = UIAlertAction(
+                        title: "OK", style: UIAlertActionStyle.Default) { (action) in
+                            //self.goBack()
+                            
+                    }
+                    alert.addAction(confirmAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Error", message: "Something went wrong. Please scan the QR Code again.", preferredStyle: UIAlertControllerStyle.Alert)
+                    let confirmAction = UIAlertAction(
+                        title: "OK", style: UIAlertActionStyle.Default) { (action) in
+                            //self.goBack()
+                            
+                    }
+                    alert.addAction(confirmAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    print("Problem in saving stamp")
+                }
+            }
+        }
     }
     
     // Sign the current user out of the app
@@ -144,11 +197,12 @@ class LoginViewController: UIViewController {
         let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") 
         self.presentViewController(vc, animated: true, completion: nil)
     }
-    
+
     func isEmailVerified() ->Bool
     {
+        
         let currentUser = PFUser.currentUser()
-        if currentUser != nil && currentUser!.username != nil && currentUser!["emailVerified"] as! Bool
+        if currentUser != nil && currentUser!.username != nil && currentUser!["emailVerified"] as! String == "true"
         {
             return true
         }

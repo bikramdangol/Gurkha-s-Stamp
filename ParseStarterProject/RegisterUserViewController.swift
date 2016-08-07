@@ -93,7 +93,7 @@ class RegisterUserViewController: UIViewController {
                 //self.displayErrorMessage("Something went wrong, Please try again later.")
             }
             
-            if user.count > 0 {
+            if user.count > 1 {
                 return
             }
         }
@@ -102,6 +102,9 @@ class RegisterUserViewController: UIViewController {
         user.username = username
         user.password = userPassword
         user.email = username
+        user["emailVerified"] = "true"
+        user["role"] = "customer"
+        user["redeem"] = "false"
        
         
         user.signUpInBackgroundWithBlock {

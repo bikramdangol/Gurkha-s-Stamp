@@ -30,14 +30,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()
-
+        
+        let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration)
+-> Void in
+            ParseMutableClientConfiguration.applicationId = "GurkhazStampBoulder4651WheatRidge16"
+            ParseMutableClientConfiguration.clientKey = "GurkhazStampMaster7922274Bikram"
+            ParseMutableClientConfiguration.server = "https://gurkhazstamp.herokuapp.com/parse"
+            })
+        Parse.initializeWithConfiguration(parseConfiguration)
         // ****************************************************************************
         // Uncomment this line if you want to enable Crash Reporting
         // ParseCrashReporting.enable()
         //
         // Uncomment and fill in with your Parse credentials:
-        Parse.setApplicationId("abwxdQKNNMosUoyGzECMwXfX0eTcv1EARCOdJtK7",
-                clientKey: "NjBT3VowRFXtJ27RbP3HF4FKscZJQeZ4Qsg6ouoa")
+       // Parse.setApplicationId("abwxdQKNNMosUoyGzECMwXfX0eTcv1EARCOdJtK7",
+       //         clientKey: "NjBT3VowRFXtJ27RbP3HF4FKscZJQeZ4Qsg6ouoa")
         //
         // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
         // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
