@@ -40,23 +40,23 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return customerList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("customerCell", forIndexPath: indexPath) as! CustomerTableCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customerCell", for: indexPath) as! CustomerTableCell
         
-        let row = indexPath.row
+        let row = (indexPath as NSIndexPath).row
         if let user = customerList[row] as? [String: AnyObject]
         {
             let isRedeemReady = user["redeem"] as! String == "true"
             cell.customerEmail.text = user["username"] as? String
-            cell.approveButton.hidden = !isRedeemReady
+            cell.approveButton.isHidden = !isRedeemReady
         }
         
         
@@ -65,10 +65,10 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     // MARK:  UITableViewDelegate Methods
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        let row = indexPath.row
+        let row = (indexPath as NSIndexPath).row
         print(customerList[row])
     }
     
@@ -80,7 +80,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     
-    @IBAction func logoutButtonPressed(sender: UIButton) {
+    @IBAction func logoutButtonPressed(_ sender: UIButton) {
         self.processSignOut()
     }
 
@@ -92,8 +92,8 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // Display sign in / up view controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
-        self.presentViewController(vc, animated: true, completion: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        self.present(vc, animated: true, completion: nil)
     }
 
     /*

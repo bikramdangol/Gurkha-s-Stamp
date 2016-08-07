@@ -28,17 +28,17 @@ class PunchCardViewController: UIViewController {
     @IBOutlet var starImage10: UIImageView!
     @IBOutlet weak var redeemButton: UIButton!
     
-    @IBAction func reddemButtonPressed(sender: UIButton) {
+    @IBAction func reddemButtonPressed(_ sender: UIButton) {
         self.redeemStamp()
     }
     
     func redeemStamp()
     {
-        let user = PFUser.currentUser()!
+        let user = PFUser.current()!
         
         let getRedeemObjectQuery = PFQuery(className:"Redeem")
         getRedeemObjectQuery.whereKey("user", equalTo:user)
-        getRedeemObjectQuery.findObjectsInBackgroundWithBlock{ (objects:[PFObject]?, error:NSError?) -> Void in
+        getRedeemObjectQuery.findObjectsInBackground{ (objects, error) -> Void in
             var redeem:PFObject
             
             if objects?.count == 0 {
@@ -92,17 +92,17 @@ class PunchCardViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.fillStampsForTheUser()
     }
     
     func fillStampsForTheUser()
     {
-        let user = PFUser.currentUser()!
+        let user = PFUser.current()!
         let getStampQuery = PFQuery(className: "Stamp")
         getStampQuery.whereKey("user", equalTo: user)
-        getStampQuery.findObjectsInBackgroundWithBlock { (stamps:[PFObject]?, error:NSError?) -> Void in
+        getStampQuery.findObjectsInBackground { (stamps, error) -> Void in
             
             var stampCount = 0
             if error == nil && stamps?.count == 1 {
@@ -116,28 +116,29 @@ class PunchCardViewController: UIViewController {
             self.countLabel!.text = String(stampCount)
             
             if stampCount == 10 {
-                self.scanButton.enabled = false
-                self.redeemButton.hidden = false
+                self.scanButton.isEnabled = false
+                self.redeemButton.isHidden = false
             }
             else {
-                self.scanButton.enabled = true
-                self.redeemButton.hidden = true
+                self.scanButton.isEnabled = true
+                self.redeemButton.isHidden = true
             }
         }
         
     }
     
-    @IBAction func scanQRCodePressed(sender: UIButton) {
-        self.performSegueWithIdentifier("punchCardToQRReaderSegue", sender: self)
+    @IBAction func scanQRCodePressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "punchCardToQRReaderSegue", sender: self)
     }
     
-    @IBAction func logoutBarButtonItemPressed(sender: UIBarButtonItem) {
+    @IBAction func logoutBarButtonItemPressed(_ sender: UIBarButtonItem) {
         PFUser.logOut()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func fillStars(var count:Int)
+    func fillStars(_ count:Int)
     {
+        var count = count
         self.fillWithEmptyStars()
         let tens = count/10
         count = count%10
@@ -189,7 +190,7 @@ class PunchCardViewController: UIViewController {
     {
         let htmlText = "<b>Gurkhas On The Hill</b><br/><a href=\"https://maps.google.com?saddr=Current+Location&daddr=40.0071601868,-105.2759399414\" target=\"_blank\">1310 College Ave Ste 230</a><br/>Boulder CO 80302<br/><a href=\"tel:303-443-1355\">303-443-1355</a></p>"
         let attributedString = try! NSAttributedString(
-            data: htmlText.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
+            data: htmlText.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
             options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
             documentAttributes: nil)
         titleLabel.attributedText = attributedString

@@ -14,7 +14,7 @@ class CustomerTableCell: UITableViewCell {
     @IBOutlet weak var customerEmail: UILabel!
     @IBOutlet weak var approveButton: UIButton!
     
-    @IBAction func approveButtonPressed(sender: UIButton) {
+    @IBAction func approveButtonPressed(_ sender: UIButton) {
         
         
         let email = customerEmail.text
@@ -28,7 +28,7 @@ class CustomerTableCell: UITableViewCell {
             
             let getRedeemObjectQuery = PFQuery(className:"Redeem")
             getRedeemObjectQuery.whereKey("user", equalTo:user!)
-            getRedeemObjectQuery.findObjectsInBackgroundWithBlock{ (objects:[PFObject]?, error:NSError?) -> Void in
+            getRedeemObjectQuery.findObjectsInBackground{ (objects, error) -> Void in
                 var redeem:PFObject
                 
                 if objects?.count == 0 {
@@ -43,7 +43,7 @@ class CustomerTableCell: UITableViewCell {
                 redeem["approved"] = "Y"
                 
                 redeem.saveInBackground()
-                self.approveButton.hidden = true
+                self.approveButton.isHidden = true
                 
                 //reset stampcount to "0" in Stamp table
                
@@ -62,7 +62,7 @@ class CustomerTableCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

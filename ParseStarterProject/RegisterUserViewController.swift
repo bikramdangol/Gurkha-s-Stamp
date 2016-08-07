@@ -22,11 +22,11 @@ class RegisterUserViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func isValidEmail(emailString:String) -> Bool {
+    func isValidEmail(_ emailString:String) -> Bool {
         let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluateWithObject(emailString)
+        return emailTest.evaluate(with: emailString)
     }
 
     @IBOutlet weak var userEmail: UITextField!
@@ -37,18 +37,18 @@ class RegisterUserViewController: UIViewController {
     
     
     @available(iOS 8.0, *)
-    @IBAction func userRegisterButtonClicked(sender: UIButton){
+    @IBAction func userRegisterButtonClicked(_ sender: UIButton){
         if !isValidEmail(userEmail.text!) {
             let alertController = UIAlertController(title: "Registration",
                 message: "Please enter valid email.",
-                preferredStyle: UIAlertControllerStyle.Alert
+                preferredStyle: UIAlertControllerStyle.alert
             )
             alertController.addAction(UIAlertAction(title: "OK",
-                style: UIAlertActionStyle.Default,
+                style: UIAlertActionStyle.default,
                 handler: nil)
             )
             // Display alert
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
             return
         }
         
@@ -58,14 +58,14 @@ class RegisterUserViewController: UIViewController {
         else {
             let alertController = UIAlertController(title: "Registration",
                 message: "The password typed is not matching.",
-                preferredStyle: UIAlertControllerStyle.Alert
+                preferredStyle: UIAlertControllerStyle.alert
             )
             alertController.addAction(UIAlertAction(title: "OK",
-                style: UIAlertActionStyle.Default,
+                style: UIAlertActionStyle.default,
                 handler: nil)
             )
             // Display alert
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -77,7 +77,7 @@ class RegisterUserViewController: UIViewController {
         let userPassword = password.text
         
         // Ensure username is lowercase
-        username = username!.lowercaseString
+        username = username!.lowercased()
         
        
         
@@ -107,10 +107,10 @@ class RegisterUserViewController: UIViewController {
         user["redeem"] = "false"
        
         
-        user.signUpInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in
+        user.signUpInBackground {
+            (succeeded, error) -> Void in
             //self.activityIndicator.stopAnimating()
-            if let error = error {
+            if let error = error as? NSError {
                 let errorString = error.userInfo["error"] as? NSString
                 print(errorString)
                 // Show the errorString somewhere and let the user try again.
@@ -124,14 +124,14 @@ class RegisterUserViewController: UIViewController {
                 // User needs to verify email address before continuing
                 let alertController = UIAlertController(title: "Email address verification",
                     message: "We have sent you an email that contains a link - you must click this link before you can continue.",
-                    preferredStyle: UIAlertControllerStyle.Alert
+                    preferredStyle: UIAlertControllerStyle.alert
                 )
                 alertController.addAction(UIAlertAction(title: "OK",
-                    style: UIAlertActionStyle.Default,
+                    style: UIAlertActionStyle.default,
                     handler: { alertController in self.processSignOut()})
                 )
                 // Display alert
-                self.presentViewController(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
             }
         }
     }
@@ -144,11 +144,11 @@ class RegisterUserViewController: UIViewController {
         
         // Display sign in / up view controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
-        self.presentViewController(vc, animated: true, completion: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        self.present(vc, animated: true, completion: nil)
     }
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     

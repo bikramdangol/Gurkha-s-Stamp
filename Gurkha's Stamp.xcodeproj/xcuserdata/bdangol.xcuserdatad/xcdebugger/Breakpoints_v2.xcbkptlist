@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/QRReaderViewController.swift"
-            timestampString = "471636705.901698"
+            timestampString = "492280410.483652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "goBack()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/LoginViewController.swift"
-            timestampString = "478503357.015297"
+            timestampString = "492280410.483652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265">
+            startingLineNumber = "275"
+            endingLineNumber = "275">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -40,12 +40,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/QRReaderViewController.swift"
-            timestampString = "475692243.199915"
+            timestampString = "492280410.483652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "reader(reader:didScanResult:)"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "reader(_:didScanResult:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -62,55 +62,70 @@
             startingLineNumber = "89"
             endingLineNumber = "89"
             landmarkName = "signup()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ParseStarterProject/LoginViewController.swift"
-            timestampString = "478503357.015297"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
-            landmarkName = "isEmailVerified()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ParseStarterProject/LoginViewController.swift"
-            timestampString = "478503357.015297"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "signin()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ParseStarterProject/AdminViewController.swift"
-            timestampString = "483944823.82465"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "tableView(tableView:cellForRowAtIndexPath:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/LoginViewController.swift"
+            timestampString = "492280410.483652"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "isEmailVerified()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Gurkha_s_Stamp.LoginViewController.isEmailVerified () -&gt; Swift.Bool"
+                  moduleName = "Gurkha&apos;s Stamp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bdangol/iOSApps/iOS9Apps/Gurkha&apos;s%20Stamp/ParseStarterProject/LoginViewController.swift"
+                  timestampString = "492280412.919493"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Gurkha_s_Stamp.LoginViewController.(isEmailVerified () -&gt; Swift.Bool).(implicit closure #1)"
+                  moduleName = "Gurkha&apos;s Stamp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bdangol/iOSApps/iOS9Apps/Gurkha&apos;s%20Stamp/ParseStarterProject/LoginViewController.swift"
+                  timestampString = "492280412.9207"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Gurkha_s_Stamp.LoginViewController.(isEmailVerified () -&gt; Swift.Bool).(implicit closure #2)"
+                  moduleName = "Gurkha&apos;s Stamp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bdangol/iOSApps/iOS9Apps/Gurkha&apos;s%20Stamp/ParseStarterProject/LoginViewController.swift"
+                  timestampString = "492280412.921809"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

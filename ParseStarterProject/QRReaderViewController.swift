@@ -12,7 +12,8 @@ import AVFoundation
 
 @available(iOS 8.0, *)
 class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelegate  {
-    lazy var reader = QRCodeReaderViewController(metadataObjectTypes: [AVMetadataObjectTypeQRCode])
+    
+    lazy var reader = QRCodeReaderViewController(metadataObjectTypes: [AVMetadataObjectTypeQRCode], startScanningAtLoad: true)
 
     var barCodeString = ""
     
@@ -31,8 +32,8 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
     func getBarCodeString() {
         
         let query = PFQuery(className:"Barcode")
-        query.getFirstObjectInBackgroundWithBlock {
-            (pfObject: PFObject?, error: NSError?) -> Void in
+        query.getFirstObjectInBackground {
+            (pfObject, error) -> Void in
             if error == nil || pfObject != nil {
                 self.barCodeString = pfObject?["barcode"] as! String
             }
@@ -46,41 +47,41 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
     {
         if QRCodeReader.supportsMetadataObjectTypes()
         {
-            reader.modalPresentationStyle = .FormSheet
+            reader.modalPresentationStyle = .formSheet
             reader.delegate               = self
             
             reader.completionBlock = {(result: String?) in
                 print("Completion with result: \(result)")
             }
             
-            presentViewController(reader, animated: true, completion: nil)
+            present(reader, animated: true, completion: nil)
         }
         else
         {
-            let alert = UIAlertController(title: "Error", message: "Reader not supported by the current device", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            let alert = UIAlertController(title: "Error", message: "Reader not supported by the current device", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             
-            presentViewController(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
         }
 
     }
     
     func goBack()
     {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func showErrorMessage()
     {
-            let alert = UIAlertController(title: "Error", message: "Invalid Code. Please scan the QR Code again.", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Error", message: "Invalid Code. Please scan the QR Code again.", preferredStyle: UIAlertControllerStyle.alert)
             let cancelAction = UIAlertAction(
                 title: "Cancel",
-                style: UIAlertActionStyle.Destructive) { (action) in
+                style: UIAlertActionStyle.destructive) { (action) in
                     self.goBack()
             }
             
             let confirmAction = UIAlertAction(
-                title: "OK", style: UIAlertActionStyle.Default) { (action) in
+                title: "OK", style: UIAlertActionStyle.default) { (action) in
                     self.readQRCode()
                     
             }
@@ -88,17 +89,17 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
             alert.addAction(confirmAction)
             alert.addAction(cancelAction)
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
 
        
     }
     
     func saveStamp()
     {
-        let user = PFUser.currentUser()!
+        let user = PFUser.current()!
         let getStampQuery = PFQuery(className: "Stamp")
         getStampQuery.whereKey("user", equalTo: user)
-        getStampQuery.findObjectsInBackgroundWithBlock { (stamps:[PFObject]?, error:NSError?) -> Void in
+        getStampQuery.findObjectsInBackground { (stamps, error) -> Void in
             
             var stampCount = 0
             var stamp:PFObject
@@ -114,26 +115,26 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
             }
             
             stamp["stampcount"] = stampCount + 1
-            stamp.saveInBackgroundWithBlock {
-                (success: Bool, error: NSError?) -> Void in
+            stamp.saveInBackground {
+                (success, error) -> Void in
                 if (success) {
-                    let alert = UIAlertController(title: "Success", message: "Stamped Successfully!!!.", preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: "Success", message: "Stamped Successfully!!!.", preferredStyle: UIAlertControllerStyle.alert)
                     let confirmAction = UIAlertAction(
-                        title: "OK", style: UIAlertActionStyle.Default) { (action) in
+                        title: "OK", style: UIAlertActionStyle.default) { (action) in
                             self.goBack()
                             
                     }
                     alert.addAction(confirmAction)
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.present(alert, animated: true, completion: nil)
                 } else {
-                    let alert = UIAlertController(title: "Error", message: "Something went wrong. Please scan the QR Code again.", preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: "Error", message: "Something went wrong. Please scan the QR Code again.", preferredStyle: UIAlertControllerStyle.alert)
                     let confirmAction = UIAlertAction(
-                        title: "OK", style: UIAlertActionStyle.Default) { (action) in
+                        title: "OK", style: UIAlertActionStyle.default) { (action) in
                             self.goBack()
                             
                     }
                     alert.addAction(confirmAction)
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.present(alert, animated: true, completion: nil)
                     
                     print("Problem in saving stamp")
                 }
@@ -144,8 +145,8 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
     // MARK: - QRCodeReader Delegate Methods
     
     
-    func reader(reader: QRCodeReaderViewController, didScanResult result: String) {
-        self.dismissViewControllerAnimated(true, completion: { [unowned self] () -> Void in
+    func reader(_ reader: QRCodeReaderViewController, didScanResult result: String) {
+        self.dismiss(animated: true, completion: { [unowned self] () -> Void in
             if result == "Gurkha\'sFreeStamp"//self.barCodeString
             {
                 self.saveStamp()
@@ -159,8 +160,8 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
         
     }
     
-    func readerDidCancel(reader: QRCodeReaderViewController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func readerDidCancel(_ reader: QRCodeReaderViewController) {
+        self.dismiss(animated: true, completion: nil)
     }
 
 

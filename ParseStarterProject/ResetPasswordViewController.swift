@@ -12,7 +12,7 @@ import Parse
 class ResetPasswordViewController: UIViewController {
 
     @available(iOS 8.0, *)
-    @IBAction func submitEmailButtonPressed(sender: UIButton) {
+    @IBAction func submitEmailButtonPressed(_ sender: UIButton) {
         let email = userEmail.text!
         
         if self.isValidEmail(email) {
@@ -27,16 +27,16 @@ class ResetPasswordViewController: UIViewController {
             }
             
             if user.count > 0 {
-                PFUser.requestPasswordResetForEmailInBackground(userEmail.text!)
+                PFUser.requestPasswordResetForEmail(inBackground: userEmail.text!)
                 
-                let alertController = UIAlertController(title: "Reset Password", message: "We have sent you an email that contains a link to reset your password.", preferredStyle: UIAlertControllerStyle.Alert)
+                let alertController = UIAlertController(title: "Reset Password", message: "We have sent you an email that contains a link to reset your password.", preferredStyle: UIAlertControllerStyle.alert)
                 
                 alertController.addAction(UIAlertAction(title: "OK",
-                    style: UIAlertActionStyle.Default,
+                    style: UIAlertActionStyle.default,
                     handler: { alertController in self.processSignOut()})
                 )
                 // Display alert
-                self.presentViewController(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
                 
                 print("Password reset lik has been sent to \(email)")
             }
@@ -60,11 +60,11 @@ class ResetPasswordViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func isValidEmail(emailString:String) -> Bool {
+    func isValidEmail(_ emailString:String) -> Bool {
         let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluateWithObject(emailString)
+        return emailTest.evaluate(with: emailString)
     }
     
     
@@ -76,26 +76,26 @@ class ResetPasswordViewController: UIViewController {
         
         // Display sign in / up view controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
-        self.presentViewController(vc, animated: true, completion: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        self.present(vc, animated: true, completion: nil)
     }
 
     @available(iOS 8.0, *)
-    func displayErrorMessage(message:String) {
+    func displayErrorMessage(_ message:String) {
     
         let alertController = UIAlertController(title: "Reset Password",
                             message: message,
-                            preferredStyle: UIAlertControllerStyle.Alert
+                            preferredStyle: UIAlertControllerStyle.alert
                             )
         alertController.addAction(UIAlertAction(title: "OK",
-                                style: UIAlertActionStyle.Default,
+                                style: UIAlertActionStyle.default,
                                 handler: nil)
                                 )
         // Display alert
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 

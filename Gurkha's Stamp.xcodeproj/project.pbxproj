@@ -255,6 +255,7 @@
 					81BA81441A49DA1800E65899 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = KW2G239WVX;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -393,7 +394,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -430,7 +431,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -455,6 +456,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gurkhasonthehill.Gurkha-s-Stamp";
 				PRODUCT_NAME = "Gurkha's Stamp";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -475,6 +477,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gurkhasonthehill.Gurkha-s-Stamp";
 				PRODUCT_NAME = "Gurkha's Stamp";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

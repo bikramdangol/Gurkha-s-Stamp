@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
     {
         let htmlText = "<b>Locations</b><br/><b>Gurkhas On The Hill</b><p><a href=\"https://maps.google.com?saddr=Current+Location&daddr=40.0071601868,-105.2759399414\" target=\"_blank\">1310 College Ave Ste 230</a><br />Boulder CO 80302<br /><a href=\"tel:303-443-1355\">303-443-1355</a></p><b>Hours</b><p class=\"fs14\">Monday: 11:00am to 10:00pm<br />Tuesday: 11:00am to 9:00pm<br />Wednesday: 11:00am to 9:00pm<br />Thursday: 11:00am to 9:00pm<br />Friday: 11:00am to 9:00pm<br />Saturday: 11:00am to 9:00pm<br />Sunday: 11:00am to 9:00pm<br /></p>"
         let attributedString = try! NSAttributedString(
-            data: htmlText.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
+            data: htmlText.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
             options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
             documentAttributes: nil)
         detailLabel.attributedText = attributedString
