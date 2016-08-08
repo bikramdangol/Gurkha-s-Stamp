@@ -147,7 +147,7 @@ class QRReaderViewController: UIViewController, QRCodeReaderViewControllerDelega
     
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: String) {
         self.dismiss(animated: true, completion: { [unowned self] () -> Void in
-            if result == "Gurkha\'sFreeStamp"//self.barCodeString
+            if result == self.barCodeString
             {
                 self.saveStamp()
             }
