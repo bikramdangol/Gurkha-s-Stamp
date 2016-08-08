@@ -52,9 +52,9 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "customerCell", for: indexPath) as! CustomerTableCell
         
         let row = (indexPath as NSIndexPath).row
-        if let user = customerList[row] as? [String: AnyObject]
+        if let user = customerList[row] as? PFUser
         {
-            let isRedeemReady = user["redeem"] as! String == "true"
+            let isRedeemReady = user["redeem"] as! Bool == true
             cell.customerEmail.text = user["username"] as? String
             cell.approveButton.isHidden = !isRedeemReady
         }

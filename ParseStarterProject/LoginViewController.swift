@@ -149,7 +149,7 @@ class LoginViewController: UIViewController {
     }
     
     func checkRoleAndLogin(_ user:PFUser) {
-        if false && user["role"] as! String == "admin" {
+        if user["role"] as! String == "admin" {
             self.performSegue(withIdentifier: "loginToAdminView", sender: nil)
             print("Your are logged in as Admin!!!")
         }
